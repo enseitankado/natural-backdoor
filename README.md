@@ -1,5 +1,5 @@
-# persistance_backdoor
-Creates persistance backdoor over administrative shares on Windows boxes
+# hadmin.bat
+Creates persistance and undetectable backdoor over administrative shares on Windows boxes.
 # What is it?
 It's batch (cmd) file that create a backdoor which use the native features of windows. It does not create any suspicious anomaly indication in the system. It does not get caught by standard antivirus and firewalls. Once the script is run, full access to the disk drives of the victim computer over the network is provided. Script creates an admin account with password admin0 and adds it to administrative group, then enable administrative shares. 
 # Installing
