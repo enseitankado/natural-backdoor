@@ -6,7 +6,8 @@ It's batch (cmd) file creates a backdoor which use the native features of window
 - Hides admin user from control panel and logon screen.
 - Enables file sharing on Windows Firewall
 - Enables windows administrative file sharing (c$ ipc$ admin$ etc...)
-- Disable empty password account security
+- Disables empty password account security
+- Appends the mac address of the victim computer to the end of the script file with a alias.
 # Installing
 Just run the script on victim computer with administrative privileges. 
 # Using
@@ -16,4 +17,5 @@ Just run uhadmin.bat with administrative privileges Its revert all registry sett
 # Tested on
 - [ ] Windows 7
 - [x] Windows 10 32/64
-– [ ] Windows 11 32/64
+- [ ] Windows 11 32/64
+
