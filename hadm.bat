@@ -26,7 +26,5 @@ rem SAVE THE IDENTY OF TARGET COMPUTER
 set /p alias=Enter an alias:
 @FOR /F %%i IN ('getmac /fo table /nh') DO ECHO rem %alias% %%i >> hadm.bat
 
-rem dfsdf D8-BB-C1-53-EC-C5 
-rem dfsdf 0A-00-27-00-00-02 
-rem dfsdf 00-FF-81-D1-2F-28 
-rem dfsdf 04-7F-0E-0E-2E-87 
+rem LISTING INFECTED HOSTS
+rem ----------------------
