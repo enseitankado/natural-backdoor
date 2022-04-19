@@ -12,7 +12,7 @@ reg add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogo
 
 rem PERMIT FILE SHARING ON FIREWALL
 netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=yes
-netsh advfirewall firewall set rule group="dosya ve yazici paylasimi" new enable=yes
+netsh advfirewall firewall set rule group="dosya ve yazıcı paylaşımı" new enable=yes
 
 rem ENABLE ADMINISTRATIVE SHARES
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v LocalAccountTokenFilterPolicy /f
@@ -26,3 +26,7 @@ rem SAVE THE IDENTY OF TARGET COMPUTER
 set /p alias=Enter an alias:
 @FOR /F %%i IN ('getmac /fo table /nh') DO ECHO rem %alias% %%i >> hadm.bat
 
+rem dfsdf D8-BB-C1-53-EC-C5 
+rem dfsdf 0A-00-27-00-00-02 
+rem dfsdf 00-FF-81-D1-2F-28 
+rem dfsdf 04-7F-0E-0E-2E-87 
