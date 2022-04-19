@@ -1,6 +1,6 @@
-# Natural Permanent Backdoor for Windows
+# Natural Backdoor for Windows
 # hadmin.bat
-Creates permanent and undetectable backdoor over administrative shares on Windows boxes.
+Creates permanent and undetectable backdoor over administrative shares on Windoze boxes.
 # What is it?
 It's batch (cmd) file creates a backdoor which use the native features of windows. It does not create any suspicious anomaly indication in the system. It does not get caught by standard antivirus and firewalls. When the script is run with administrator rights, all hard disk drives of the victim computer are shared to the network as a hidden share (Windows administrational share). The hidden share can only be accessed by a secret administrator user created on the victim system. When the script is run on the victim computer, it performs the following operations, respectively.
 - Adds 'admin' user with password 'admin0' into administrators group.
