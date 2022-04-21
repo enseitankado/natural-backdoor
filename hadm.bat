@@ -1,4 +1,4 @@
-@echo on
+@echo off
 
 rem USE TURKISH CHRACTER TABLE
 chcp 1254
