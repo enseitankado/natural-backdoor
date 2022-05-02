@@ -24,6 +24,8 @@ You can run commands on the victim computer by taking advantage of the RPC featu
 
 ![Remote shell](remote-shell.png "Remote shell")
 
+[cmd cheat sheets](https://github.com/security-cheatsheet/cmd-command-cheat-sheet)
+
 # Uninstall
 Just run uhadmin.bat with administrative privileges Its revert all registry settings and drop admin account.  The control computer can still continue to access the victim computer via the open session. However, this access authorization will be completely lost when the computer is restarted.
 # Tested on
