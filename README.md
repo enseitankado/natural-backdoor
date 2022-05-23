@@ -16,13 +16,13 @@ Run the script on victim computer with administrative privileges. In some cases 
 # Using
 The address \\ip\c$ gives the attacker full access (including write) to the c drive of the victim's computer. See the image below. The admin:admin0 account used for access is a hidden account and does not appear on the victim computer's login screen and control panel. The script also adds the required firewall rule for samba access (windows shares), disabling the user account control. 
 
-![Administrative shares](administrative-shares.png "Administrative shares")
+![Administrative shares](assets/administrative-shares.png "Administrative shares")
 
 The script prompts for an alias for the target computer before it finishes running. The nickname entered is saved at the end of the hadmin.bat file along with the mac address of the computer on which the script is run. This mac address is stored to identify the victim computer on the network. If necessary, the current IP address of the target computer can be resolved by scanning the network from the mac address added to the end of the file.
 # Next Stage: Remote Shell
 You can run commands on the victim computer by taking advantage of the RPC feature of Windows. You can access the command line of the remote computer with the psexec program by downloading pstools from [the microsoft site](https://docs.microsoft.com/en-us/sysinternals/downloads/psexec) (sysinternals). PSEXEC tries to connect to the Admin$ share of the remote computer, in order to copy on the remote machine the PSEXecSVC.exe, which is the binary of the Service that will run remotely. The following psexec tutorial runs cmd.exe in interactive mode on the remote computer. Once you have the command line, what you can do is limited by your imagination.
 
-![Remote shell](remote-shell.png "Remote shell")
+![Remote shell](assets/remote-shell.png "Remote shell")
 
 
 # Some usefull shell commands
