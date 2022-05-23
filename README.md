@@ -33,7 +33,7 @@ Some functional command examples listed below.
 
 # Further Steps
 
-Remote control victim computer  with UltraVNC. [Click](uvnc.md) for installation manual.
+Remote control victim computer  with UltraVNC. [Click](uvnc.md) for installation steps.
 
 # Uninstall
 Just run uhadmin.bat with administrative privileges Its revert all registry settings and drop admin account.  The control computer can still continue to access the victim computer via the open session. However, this access authorization will be completely lost when the computer is restarted.
