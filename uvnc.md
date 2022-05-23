@@ -25,9 +25,9 @@ The inno setup parameters above allow the installation to complete silently. The
 Create the **ultravnc.ini** file with the password defined in the **"%programfiles%\uvnc"** of the victim computer. 
 UltraVNC password is "**admin0**" defined in **ultravnc.ini**. The ini file content is below:
 
-` [ultravnc]
-` passwd=56B6ACA18D1BA76008
-` passwd2=56B6ACA18D1BA76008
+[ultravnc]
+passwd=56B6ACA18D1BA76008
+passwd2=56B6ACA18D1BA76008
 
 Copy the file to **"%programfiles%\uvnc"** folder on victim computer.
 
