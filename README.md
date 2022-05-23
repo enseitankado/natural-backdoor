@@ -24,13 +24,16 @@ You can run commands on the victim computer by taking advantage of the RPC featu
 
 ![Remote shell](assets/remote-shell.png "Remote shell")
 
-
 # Some usefull shell commands
 
 Some functional command examples listed below. 
 > fsutil fsinfo drives : Get fixed disk drives list.
 
 [cmd cheat sheet](https://github.com/security-cheatsheet/cmd-command-cheat-sheet)
+
+# Further Steps
+
+Remote control victim computer  with UltraVNC. [Click](uvnc.md) for installation manual.
 
 # Uninstall
 Just run uhadmin.bat with administrative privileges Its revert all registry settings and drop admin account.  The control computer can still continue to access the victim computer via the open session. However, this access authorization will be completely lost when the computer is restarted.

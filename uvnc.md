@@ -26,9 +26,7 @@ Create the **ultravnc.ini** file with the password defined in the **"%programfil
 UltraVNC password is "**admin0**" defined in **ultravnc.ini**. The ini file content is below:
 
 ` [ultravnc]`
-
 ` passwd=56B6ACA18D1BA76008`
-
 ` passwd2=56B6ACA18D1BA76008`
 
 Copy the file to **"%programfiles%\uvnc"** folder on victim computer.
