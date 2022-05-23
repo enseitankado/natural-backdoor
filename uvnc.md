@@ -4,9 +4,9 @@ UltraVNC is an open-source remote-administration/remote-desktop-software utility
 
 ![UltraVNC](assets/uvnc.jpg "Open source UltraVNC remote desktop client/server")
 
-# Install VNC Server to Victim via Administrative Shares
+# Install VNC Server to Victim Computer
 
-You can remotely view or control the victim computer using the UltraVNC tool. For this, follow the steps below.
+You can remotely view, control or transfer files the victim computer using the UltraVNC tool. For this, follow the steps below.
 
 ## Step 1: Download UltraVNC setup
 
@@ -25,9 +25,9 @@ The inno setup parameters above allow the installation to complete silently. The
 Create the **ultravnc.ini** file with the password defined in the **"%programfiles%\uvnc"** of the victim computer. 
 UltraVNC password is "**admin0**" defined in **ultravnc.ini**. The ini file content is below:
 
-` [ultravnc]`
-` passwd=56B6ACA18D1BA76008`
-` passwd2=56B6ACA18D1BA76008`
+`[ultravnc]
+`passwd=56B6ACA18D1BA76008
+`passwd2=56B6ACA18D1BA76008
 
 Copy the file to **"%programfiles%\uvnc"** folder on victim computer.
 
@@ -43,6 +43,6 @@ And run below command over remote shell:
 
 ## Step 5: Restart the service
 
-Run UltraVNC viewer and connect victim computer.
+Run UltraVNC viewer and connect to victim computer. You can control it with mouse/keyboard or download/upload files via UltraVNC's  file manager.
 
 ![UltraVNC Viewer](assets/uvnc_viewer.png "UltraVNC Viewer")
