@@ -2,7 +2,7 @@
 
 UltraVNC is an open-source remote-administration/remote-desktop-software utility. The client supports Microsoft Windows and Linux but the server only supports Windows. It uses the VNC protocol to control/access another computer remotely over a network connection.
 
-![Administrative shares](assets/uvnc.jpg "Administrative shares")
+![UltraVNC](assets/uvnc.jpg "Open source UltraVNC remote desktop client/server")
 
 # Install VNC Server to Victim via Administrative Shares
 
@@ -20,20 +20,18 @@ To start silent installation on victim computer run **"uvncsetup.exe"** as remot
 
 The inno setup parameters above allow the installation to complete silently. The installation files will be saved in the **"%program files%\uvnc"** directory on victim computer.
 
-## Step 4: Define new password 
+## Step 3: Define new password 
 
 Create the **ultravnc.ini** file with the password defined in the **"%programfiles%\uvnc"** of the victim computer. 
 UltraVNC password is "**admin0**" defined in **ultravnc.ini**. The ini file content is below:
 
-`
- [ultravnc]
-  passwd=56B6ACA18D1BA76008
-  passwd2=56B6ACA18D1BA76008
-`
+`[ultravnc]`
+`passwd=56B6ACA18D1BA76008`
+`passwd2=56B6ACA18D1BA76008`
 
 Copy the file to **"%programfiles%\uvnc"** folder on victim computer.
 
-## Step 5: Restart the service
+## Step 4: Restart the service
 
 Start the service for the password to take effect. To restart the service open an interactive remote shell to victim computer below:
 
@@ -42,3 +40,9 @@ Start the service for the password to take effect. To restart the service open a
 And run below command over remote shell:
 
 > net start uvnc_service
+
+## Step 5: Restart the service
+
+Run UltraVNC viewer and connect victim computer.
+
+![UltraVNC Viewer](assets/uvnc_viewer.png "UltraVNC Viewer")
