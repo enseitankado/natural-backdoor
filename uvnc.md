@@ -41,7 +41,12 @@ And run below command over remote shell:
 
 `net start uvnc_service`
 
-### Step 5: Restart the service
+### Step 5: Check the installation
+
+Check UltraVNC listen port with netstat 
+
+`netstat -ano | find "5900"`
+`tasklist /fi "pid eq <pid>"`
 
 Run UltraVNC viewer and connect to victim computer. You can control it with mouse/keyboard or download/upload files via UltraVNC's  file manager.
 

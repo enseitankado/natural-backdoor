@@ -1,0 +1,67 @@
+C:\Windows\system32>winrm quickconfig
+WinRM bu makinede yanıtları almak için ayarlanmadı.
+Aşağıdaki değişiklikler yapılmalıdır:
+
+WinRM hizmeti başlatılıyor.
+Gecikmeli otomatik başlatma için WinRM hizmeti türünü ayarla.
+
+Bu değişiklikler yapılsın mı [y/n]? y
+
+WinRM yanıtları almak için güncelleştirildi.
+
+WinRM hizmet türü başarıyla değiştirildi.
+WinRM hizmeti başlatıldı.
+WSManFault
+    Message
+        ProviderFault
+            WSManFault
+                Message = Bu makinedeki ağ bağlantısı türlerinden biri Ortak olarak ayarlandığından WinRM güvenlik duvarı özel durumu çalışmayacak. Ağ bağlantısı türünü Etki Alanı ya da Özel olarak değiştirin veya yeniden deneyin.
+
+Hata numarası:  -2144108183 0x80338169
+Bu makinedeki ağ bağlantısı türlerinden biri Ortak olarak ayarlandığından WinRM güvenlik duvarı özel durumu çalışmayacak. Ağ bağlantısı türünü Etki Alanı ya da Özel olarak değiştirin veya yeniden deneyin.
+
+C:\Windows\system32>winrm set winrm/config/Client @{AllowUnencrypted = "true"}
+Client
+    NetworkDelayms = 5000
+    URLPrefix = wsman
+    AllowUnencrypted = true
+    Auth
+        Basic = true
+        Digest = true
+        Kerberos = true
+        Negotiate = true
+        Certificate = true
+        CredSSP = false
+    DefaultPorts
+        HTTP = 5985
+        HTTPS = 5986
+    TrustedHosts
+	
+	
+	
+C:\Windows\system32>WinRM enumerate winrm/config/listener
+Listener
+    Address = *
+    Transport = HTTP
+    Port = 5985
+    Hostname
+    Enabled = true
+    URLPrefix = wsman
+    CertificateThumbprint
+    ListeningOn = 127.0.0.1, 192.168.0.28, ::1, fe80::59cf:7203:2d22:9d97%8
+	
+	
+	
+isabling Windows Remote Management
+
+To disable Windows Remote Management you need to remove the listener. The following command can be used:
+
+WinRM delete winrm/config/listener?IPAdress=*+Transport=HTTP	
+	
+	
+WinRM set winrm/config/service/auth @{Basic="true"}
+WinRM set winrm/config/client @{TrustedHosts="<local>"}
+WinRM set winrm/config/client @{TrustedHosts="RemoteHost"}
+
+winrs -r:http://192.168.0.28:5985 -u:admin -p:admin0 "ipconfig"
+
