@@ -4,10 +4,10 @@ rem USE TURKISH CHRACTER TABLE
 chcp 1254
 
 rem DROP ACCOUNT
-net user admin /del
+net user Default /del
 
 rem HIDE BACKDOOR USER ACCOUNT FROM CONTROL PANEL AND LOGON SCREEN
-reg delete "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\Userlist" /v admin /f
+reg delete "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\Userlist" /v Default /f
 
 rem PERMIT FILE SHARING ON FIREWALL
 netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=no
