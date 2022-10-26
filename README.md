@@ -33,6 +33,15 @@ You can run commands on the victim computer by taking advantage of the RPC featu
 
  -  [Click](uvnc.md) for further steps to remote control victim computer with UltraVNC.
  - You may be interested in [AutoRDPwn](https://github.com/JoelGMSec/AutoRDPwn) and [AutoRDPwn Dosc](https://darkbyte.net/autordpwn-la-guia-definitiva/)
+ 
+
+# Next Stage 3: Get stored passwords and credentials
+
+
+The LaZagne project is an open source application used to retrieve lots of passwords stored on a local computer. Each software stores its passwords using different techniques (plaintext, APIs, custom algorithms, databases, etc.). This tool has been developed for the purpose of finding these passwords for the most commonly-used software. 			
+
+https://github.com/AlessandroZ/LaZagne/releases/
+
 
 # Usefull shell commands
 
